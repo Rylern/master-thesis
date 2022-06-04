@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <title>Walkability</title>
+        <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Walkability</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="indicatorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Indicators
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="indicatorsDropdown">
+                                <li><a id="selectIndicators" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#selectIndicatorsModal">Select indicators</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editWeightsModal">Edit weights</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#saveIndicatorsModal">Save</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loadIndicatorsModal">Load</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#steepnessModal">Steepness</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navigationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Navigation
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navigationDropdown">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#navigateModal">Start navigation</a></li>
+                                <li><a id="stopNavigation" class="dropdown-item disabled" href="#">Stop navigation</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-row align-items-center legend">
+                        <select id="visualization_choice" class="form-select m-2">
+                            <option value="walkability">Walkability</option>
+                            <option value="steepness">Steepness</option>
+                        </select>
+                        <div class="">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div>Low</div>
+                                <div>High</div>
+                            </div>
+                            <div id="legend_image"></div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </nav>
+        <div id="map"></div>
+        
+        <div class="modal fade" id="selectIndicatorsModal" tabindex="-1" aria-labelledby="selectIndicatorsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="selectIndicatorsModalLabel">Select indicators</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="selectIndicatorsContent" class="modal-body d-flex flex-column">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="selectIndicatorsNext" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editWeightsModal">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editWeightsModal" tabindex="-1" aria-labelledby="editWeightsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editWeightsModalLabel">Edit weights</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>In this window, you can assign a weight to the selected indicators based on how important you think they are.</p>
+                        <div id="editWeightsContent"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="editWeightsSubmit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="saveIndicatorsModal" tabindex="-1" aria-labelledby="saveIndicatorsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="saveIndicatorsModalLabel">Save indicators</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can save the currently selected set of indicators so that you can start the analysis again later.</p>
+                        <label for="saveIndicatorsName" class="form-label">Name of the save:</label>
+                        <input type="text" id="saveIndicatorsName" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="saveIndicatorsSave" type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="loadIndicatorsModal" tabindex="-1" aria-labelledby="loadIndicatorsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loadIndicatorsModalLabel">Load indicators</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can load any previously saved set of indicators by choosing one item on the list below.</p>
+                        <select id="loadIndicatorsSaveList" class="form-select"></select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="loadIndicatorsLoad" type="button" class="btn btn-primary">Load</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="steepnessModal" tabindex="-1" aria-labelledby="steepnessModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="steepnessModalLabel">Steepness definition</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="d-flex justify-content-center">
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="Select a custom maximum uphill steepness angle (in degree)">
+                                    <input class="form-check-input" type="radio" name="steepnessMode" id="customSteepness" value="customSteepness" checked>
+                                    <label class="form-check-label" for="customSteepness">Custom</label>
+                                </div>
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="This option defines maximum steepness for hand-propelled wheelchairs, where the maximum walkable slope is set to 4.8 degrees.">
+                                    <input class="form-check-input" type="radio" name="steepnessMode" id="wheelchairSteepness" value="wheelchairSteepness">
+                                    <label class="form-check-label" for="wheelchairSteepness">Wheelchair</label>
+                                </div>
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="This option defines maximum steepness for powered wheelchairs, where the maximum walkable slope is set to 7.1 degrees.">
+                                    <input class="form-check-input" type="radio" name="steepnessMode" id="poweredSteepness" value="poweredSteepness">
+                                    <label class="form-check-label" for="poweredSteepness">Powered wheelchair</label>
+                                </div>
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="This option defines maximum steepness for walking with a cane, where the maximum walkable slope is set to 8 degrees.">
+                                    <input class="form-check-input" type="radio" name="steepnessMode" id="caneSteepness" value="caneSteepness">
+                                    <label class="form-check-label" for="caneSteepness">Cane</label>
+                                </div>
+                            </div>
+                            <div class="mt-4 mx-3">
+                                <label for="maximumSteepness" class="form-label">Maximum uphill steepness: </label>
+                                <output id="maximumSteepnessOutput"></output>
+                                <input type="range" class="form-range" id="maximumSteepness" min="2" max="10" value="10" step="0.1">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="navigateModal" tabindex="-1" aria-labelledby="navigateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="navigateModalLabel">Navigate</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <label for="fromLocation" class="form-label">From</label>
+                            </div>
+                            <div class="row justify-content-between mx-1 mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="fromLocation" aria-describedby="fromLocationFeedback">
+                                    <div id="fromLocationFeedback" class="invalid-feedback">
+                                        Unknown location.
+                                    </div>
+                                </div>
+                                <div class="col-4 ms-3 p-0">
+                                    <button id="fromLocationGetCurrent" class="btn btn-primary" type="button">Use my location</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="toLocation" class="form-label">To</label>
+                            </div>
+                            <div class="row justify-content-between mx-1 mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="toLocation" aria-describedby="toLocationFeedback">
+                                    <div id="toLocationFeedback" class="invalid-feedback">
+                                        Unknown location.
+                                    </div>
+                                </div>
+                                <div class="col-4 ms-3 p-0">
+                                    <button id="toLocationGetCurrent" class="btn btn-primary" type="button">Use my location</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="navigateErrorMessage" class="alert alert-danger" role="alert"></div>
+                        <div id="navigationSpinner" class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="submitNavigate" type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast_list" class="toast-container position-absolute bottom-0 end-0 p-3"></div>
+
+        <script src="{{ url_for('static', path='/main.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/map.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/indicators.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/steepness.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/navigate.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/legend.js') }}" type="module"></script>
+        <script src="{{ url_for('static', path='/toasts.js') }}" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>

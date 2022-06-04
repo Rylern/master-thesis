@@ -1,0 +1,200 @@
+# GENOR server
+
+## Install
+
+- Install conda (https://docs.conda.io/en/latest/)
+- Create a new conda environment with the following packages:
+
+```
+name: genor
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - anyio=3.6.1=py310hff52083_0
+  - asgiref=3.5.2=pyhd8ed1ab_0
+  - attrs=21.4.0=pyhd8ed1ab_0
+  - blosc=1.21.1=h83bc5f7_3
+  - boost-cpp=1.74.0=h6cacc03_7
+  - branca=0.5.0=pyhd8ed1ab_0
+  - brotli=1.0.9=h166bdaf_7
+  - brotli-bin=1.0.9=h166bdaf_7
+  - brotlipy=0.7.0=py310h5764c6d_1004
+  - bzip2=1.0.8=h7f98852_4
+  - c-ares=1.18.1=h7f98852_0
+  - ca-certificates=2022.5.18.1=ha878542_0
+  - cairo=1.16.0=ha12eb4b_1010
+  - certifi=2022.5.18.1=py310hff52083_0
+  - cffi=1.15.0=py310h0fdd8cc_0
+  - cfitsio=4.1.0=hd9d235c_0
+  - charset-normalizer=2.0.12=pyhd8ed1ab_0
+  - click=8.1.3=py310hff52083_0
+  - click-plugins=1.1.1=py_0
+  - cligj=0.7.2=pyhd8ed1ab_1
+  - cryptography=37.0.1=py310h9ce1e76_0
+  - curl=7.83.1=h2283fc2_0
+  - cycler=0.11.0=pyhd8ed1ab_0
+  - expat=2.4.8=h27087fc_0
+  - fastapi=0.78.0=pyhd8ed1ab_0
+  - fiona=1.8.21=py310h60a68a4_2
+  - folium=0.12.1.post1=pyhd8ed1ab_1
+  - font-ttf-dejavu-sans-mono=2.37=hab24e00_0
+  - font-ttf-inconsolata=3.000=h77eed37_0
+  - font-ttf-source-code-pro=2.038=h77eed37_0
+  - font-ttf-ubuntu=0.83=hab24e00_0
+  - fontconfig=2.14.0=h8e229c2_0
+  - fonts-conda-ecosystem=1=0
+  - fonts-conda-forge=1=0
+  - fonttools=4.33.3=py310h5764c6d_0
+  - freetype=2.10.4=h0708190_1
+  - freexl=1.0.6=h7f98852_0
+  - geopandas=0.10.2=pyhd8ed1ab_1
+  - geopandas-base=0.10.2=pyha770c72_1
+  - geos=3.10.2=h9c3ff4c_0
+  - geotiff=1.7.1=h509b78c_1
+  - gettext=0.19.8.1=h73d1719_1008
+  - giflib=5.2.1=h36c2ea0_2
+  - greenlet=1.1.2=py310hd8f1fbe_2
+  - h11=0.13.0=pyhd8ed1ab_1
+  - hdf4=4.2.15=h10796ff_3
+  - hdf5=1.12.1=nompi_h4df4325_104
+  - icu=69.1=h9c3ff4c_0
+  - idna=3.3=pyhd8ed1ab_0
+  - jinja2=3.1.2=pyhd8ed1ab_1
+  - joblib=1.1.0=pyhd8ed1ab_0
+  - jpeg=9e=h166bdaf_1
+  - json-c=0.16=hc379101_0
+  - kealib=1.4.14=h87e4c3c_3
+  - keyutils=1.6.1=h166bdaf_0
+  - kiwisolver=1.4.2=py310hbf28c38_1
+  - krb5=1.19.3=h08a2579_0
+  - lcms2=2.12=hddcbb42_0
+  - ld_impl_linux-64=2.36.1=hea4e1c9_2
+  - lerc=3.0=h9c3ff4c_0
+  - libblas=3.9.0=14_linux64_openblas
+  - libbrotlicommon=1.0.9=h166bdaf_7
+  - libbrotlidec=1.0.9=h166bdaf_7
+  - libbrotlienc=1.0.9=h166bdaf_7
+  - libcblas=3.9.0=14_linux64_openblas
+  - libcurl=7.83.1=h2283fc2_0
+  - libdap4=3.20.6=hd7c4107_2
+  - libdeflate=1.10=h7f98852_0
+  - libedit=3.1.20191231=he28a2e2_2
+  - libev=4.33=h516909a_1
+  - libffi=3.4.2=h7f98852_5
+  - libgcc-ng=12.1.0=h8d9b700_16
+  - libgdal=3.5.0=h844f3f6_1
+  - libgfortran-ng=12.1.0=h69a702a_16
+  - libgfortran5=12.1.0=hdcd56e2_16
+  - libglib=2.70.2=h174f98d_4
+  - libgomp=12.1.0=h8d9b700_16
+  - libiconv=1.16=h516909a_0
+  - libkml=1.3.0=h238a007_1014
+  - liblapack=3.9.0=14_linux64_openblas
+  - libnetcdf=4.8.1=nompi_h329d8a1_102
+  - libnghttp2=1.47.0=he49606f_0
+  - libnsl=2.0.0=h7f98852_0
+  - libopenblas=0.3.20=pthreads_h78a6416_0
+  - libpng=1.6.37=h21135ba_2
+  - libpq=14.2=h676c864_0
+  - librttopo=1.1.0=hf69c175_9
+  - libspatialindex=1.9.3=h9c3ff4c_4
+  - libspatialite=5.0.1=ha867d66_15
+  - libssh2=1.10.0=ha35d2d1_2
+  - libstdcxx-ng=12.1.0=ha89aaad_16
+  - libtiff=4.4.0=h0fcbabc_0
+  - libuuid=2.32.1=h7f98852_1000
+  - libwebp=1.2.2=h3452ae3_0
+  - libwebp-base=1.2.2=h7f98852_1
+  - libxcb=1.13=h7f98852_1004
+  - libxml2=2.9.12=h885dcf4_1
+  - libzip=1.8.0=h1c5bbd1_1
+  - libzlib=1.2.12=h166bdaf_0
+  - lz4-c=1.9.3=h9c3ff4c_1
+  - mapclassify=2.4.3=pyhd8ed1ab_0
+  - markupsafe=2.1.1=py310h5764c6d_1
+  - matplotlib-base=3.5.2=py310h5701ce4_0
+  - munch=2.5.0=py_0
+  - munkres=1.1.4=pyh9f0ad1d_0
+  - ncurses=6.3=h27087fc_1
+  - networkx=2.8.2=pyhd8ed1ab_0
+  - nspr=4.32=h9c3ff4c_1
+  - nss=3.78=h2350873_0
+  - numpy=1.22.4=py310h4ef5377_0
+  - openjpeg=2.4.0=hb52868f_1
+  - openssl=3.0.3=h166bdaf_0
+  - packaging=21.3=pyhd8ed1ab_0
+  - pandas=1.4.2=py310h769672d_2
+  - pcre=8.45=h9c3ff4c_0
+  - pillow=9.1.1=py310he619898_1
+  - pip=22.1.2=pyhd8ed1ab_0
+  - pixman=0.40.0=h36c2ea0_0
+  - poppler=22.04.0=h1434ded_1
+  - poppler-data=0.4.11=hd8ed1ab_0
+  - postgresql=14.2=hce44dc1_0
+  - proj=9.0.0=h93bde94_1
+  - pthread-stubs=0.4=h36c2ea0_1001
+  - pycparser=2.21=pyhd8ed1ab_0
+  - pydantic=1.9.1=py310h5764c6d_0
+  - pyopenssl=22.0.0=pyhd8ed1ab_0
+  - pyparsing=3.0.9=pyhd8ed1ab_0
+  - pyproj=3.3.1=py310h9bf108f_0
+  - pysocks=1.7.1=py310hff52083_5
+  - python=3.10.4=h2660328_0_cpython
+  - python-dateutil=2.8.2=pyhd8ed1ab_0
+  - python_abi=3.10=2_cp310
+  - pytz=2022.1=pyhd8ed1ab_0
+  - readline=8.1=h46c0cb4_0
+  - requests=2.27.1=pyhd8ed1ab_0
+  - rtree=1.0.0=py310hbdcdc62_1
+  - scikit-learn=1.1.1=py310hffb9edd_0
+  - scipy=1.8.1=py310h7612f91_0
+  - setuptools=62.3.2=py310hff52083_0
+  - shapely=1.8.2=py310hb974679_1
+  - six=1.16.0=pyh6c4a22f_0
+  - snappy=1.1.9=hbd366e4_1
+  - sniffio=1.2.0=py310hff52083_3
+  - sqlalchemy=1.4.37=py310h5764c6d_0
+  - sqlite=3.38.5=h4ff8645_0
+  - starlette=0.19.1=pyhd8ed1ab_0
+  - threadpoolctl=3.1.0=pyh8a188c0_0
+  - tiledb=2.9.3=h3f4058f_0
+  - tk=8.6.12=h27826a3_0
+  - typing-extensions=4.2.0=hd8ed1ab_1
+  - typing_extensions=4.2.0=pyha770c72_1
+  - tzcode=2022a=h166bdaf_0
+  - tzdata=2022a=h191b570_0
+  - unicodedata2=14.0.0=py310h5764c6d_1
+  - urllib3=1.26.9=pyhd8ed1ab_0
+  - uvicorn=0.17.6=py310hff52083_1
+  - wheel=0.37.1=pyhd8ed1ab_0
+  - xerces-c=3.2.3=h8ce2273_4
+  - xorg-kbproto=1.0.7=h7f98852_1002
+  - xorg-libice=1.0.10=h7f98852_0
+  - xorg-libsm=1.2.3=hd9c2040_1000
+  - xorg-libx11=1.7.2=h7f98852_0
+  - xorg-libxau=1.0.9=h7f98852_0
+  - xorg-libxdmcp=1.1.3=h7f98852_0
+  - xorg-libxext=1.3.4=h7f98852_1
+  - xorg-libxrender=0.9.10=h7f98852_1003
+  - xorg-renderproto=0.11.1=h7f98852_1002
+  - xorg-xextproto=7.3.0=h7f98852_1002
+  - xorg-xproto=7.0.31=h7f98852_1007
+  - xyzservices=2022.4.0=pyhd8ed1ab_0
+  - xz=5.2.5=h516909a_1
+  - zlib=1.2.12=h166bdaf_0
+  - zstd=1.5.2=h8a70e8d_1
+  - pip:
+    - gdal==3.5.0
+prefix: /home/leo/.conda/envs/genor
+```
+
+
+## Start the server (from the GENOR folder)
+
+```
+uvicorn Server.main:app --reload 	# localhost only
+uvicorn Server.main:app --host 0.0.0.0 --port 8000
+```

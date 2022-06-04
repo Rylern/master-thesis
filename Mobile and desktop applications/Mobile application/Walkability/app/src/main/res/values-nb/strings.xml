@@ -1,0 +1,69 @@
+<resources>
+    <string name="displayIndicators">Vis indikatorer</string>
+
+    <string name="selectIndicators">Velg indikatorer</string>
+    <string name="editWeights">Rediger vekter</string>
+    <string name="settings">Innstillinger</string>
+    <string name="quit">Slutte</string>
+    <string name="connection_failed">Tilkoblingen mislyktes</string>
+    <string name="selectWeightsDescription">I denne skjermen kan du tilordne en vekt (fra 0 til 100) til de valgte indikatorene basert på hvor viktige du synes de er.</string>
+
+    <string name="high">Høy</string>
+    <string name="low">Lav</string>
+    <string name="colorScale">Fargeskala</string>
+
+    <string name="selectIndicatorsTitle">Velg indikatorer</string>
+    <string name="next">Neste</string>
+    <string name="parameterValue" translatable="false">Parameterverdi</string>
+    <string name="selectAtLeastOneIndicator">Du må velge minst én indikator.</string>
+    <string name="indicatorsEdited">Indikatorer redigert.</string>
+
+    <string name="selectWeightsTitle">Velg vekter</string>
+    <string name="submit">Sende inn</string>
+
+    <string name="loadingIndicators">Lasteindikatorer…</string>
+    <string name="loadingIndicatorsDescription">Dette kan ta opptil 30 sekunder</string>
+
+    <string name="advancedMode">Avansert modus</string>
+
+    <string name="saveIndicators">Lagre indikatorer</string>
+    <string name="backupName">Navn på sikkerhetskopi</string>
+    <string name="save">Lagre</string>
+    <string name="cancel">Avbryt</string>
+    <string name="saveCurrentIndicators">Lagre gjeldende indikatorer</string>
+    <string name="indicatorsSaved">Indikatorer lagret</string>
+    <string name="specifyFileName">Du må angi et sikkerhetskopinavn</string>
+
+    <string name="loadIndicators">Lastindikatorer</string>
+    <string name="load">Laste</string>
+    <string name="indicatorsLoaded">Indikatorer lastet</string>
+
+    <string name="navigate">Navigere</string>
+    <string name="stopNavigation">Stopp navigasjonen</string>
+    <string name="from">Fra</string>
+    <string name="to">Til</string>
+    <string name="place">Plass</string>
+    <string name="myLocation">Bruk posisjonen min</string>
+    <string name="search">Søk</string>
+    <string name="unknownLocation">Ukjent plassering</string>
+    <string name="notRetrieveLocation">Kunne ikke hente plassering</string>
+    <string name="locationNotEnabled">Plassering er ikke aktivert</string>
+    <string name="routeNotFound">Rute ikke funnet</string>
+
+    <string name="showLegend">Vis legende</string>
+
+    <string name="steepness">Bratthet</string>
+    <string name="displaySteepness">Vis bratthet</string>
+    <string name="steepnessDefinition">Definisjon av bratthet</string>
+    <string name="custom">Tilpasset</string>
+    <string name="wheelchair">Rullestol</string>
+    <string name="powered">Drevet</string>
+    <string name="cane">Stokk</string>
+    <string name="maximumUphillSteepness">Maksimal bratthet i oppoverbakke:</string>
+    <string name="steepnessDefined">Bratt definert</string>
+
+    <string name="about">Informasjon</string>
+    <string name="aboutInfo">Denne applikasjonen er utviklet av Léo Leplat for sin masteroppgave om simulerings- og visualiseringsprogrammet ved NTNU i Ålesund. Dette arbeidet har blitt utført under veiledning av Ricardo Da Silva Torres (NTNU) og Claudia Viviana Lopez Alfaro (Framtidslaben Norge).</string>
+    <string name="ntnuLogo">NTNU logo</string>
+    <string name="alesundKommuneLogo">Ålesund Kommune logo</string>
+</resources>

@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    flex-grow: 1;
+}
+
+.legend {
+    font-size: small;
+}
+#legend_image {
+    height: 30px;
+    width: 200px;
+}

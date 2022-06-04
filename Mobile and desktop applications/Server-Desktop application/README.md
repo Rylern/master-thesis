@@ -1,0 +1,220 @@
+# Desktop application + server
+
+## Install
+
+- Install conda (https://docs.conda.io/en/latest/) and QGIS (https://www.qgis.org/en/site/).
+- Create a new conda environment with the following packages:
+
+```
+name: thesis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=1_gnu
+  - alsa-lib=1.2.3=h516909a_0
+  - anyio=3.5.0=py310hff52083_0
+  - asgiref=3.5.0=pyhd8ed1ab_0
+  - blosc=1.21.0=h9c3ff4c_0
+  - boost-cpp=1.74.0=h312852a_4
+  - brotlipy=0.7.0=py310h5764c6d_1004
+  - bzip2=1.0.8=h7f98852_4
+  - c-ares=1.18.1=h7f98852_0
+  - ca-certificates=2021.10.8=ha878542_0
+  - cairo=1.16.0=h6cf1ce9_1008
+  - certifi=2021.10.8=py310hff52083_2
+  - cffi=1.15.0=py310h0fdd8cc_0
+  - cfitsio=4.0.0=h9a35b8e_0
+  - charset-normalizer=2.0.12=pyhd8ed1ab_0
+  - coverage=6.3.2=py310h5764c6d_2
+  - curl=7.81.0=h2574ce0_0
+  - dbus=1.13.6=h5008d03_3
+  - draco=1.5.2=h924138e_0
+  - eigen=3.4.0=h4bd325d_0
+  - exiv2=0.27.1=had08079_0
+  - expat=2.4.6=h27087fc_0
+  - fastapi=0.75.0=pyhd8ed1ab_0
+  - font-ttf-dejavu-sans-mono=2.37=hab24e00_0
+  - font-ttf-inconsolata=3.000=h77eed37_0
+  - font-ttf-source-code-pro=2.038=h77eed37_0
+  - font-ttf-ubuntu=0.83=hab24e00_0
+  - fontconfig=2.13.96=ha180cfb_0
+  - fonts-conda-ecosystem=1=0
+  - fonts-conda-forge=1=0
+  - freetype=2.10.4=h0708190_1
+  - freexl=1.0.6=h7f98852_0
+  - future=0.18.2=py310hff52083_5
+  - gdal=3.4.0=py310h4b048a7_11
+  - geos=3.10.1=h9c3ff4c_1
+  - geotiff=1.7.0=h90a4e78_5
+  - gettext=0.19.8.1=h73d1719_1008
+  - giflib=5.2.1=h36c2ea0_2
+  - gsl=2.7=he838d99_0
+  - gst-plugins-base=1.18.5=hf529b03_3
+  - gstreamer=1.18.5=h9f60fe5_3
+  - h11=0.12.0=pyhd8ed1ab_0
+  - hdf4=4.2.15=h10796ff_3
+  - hdf5=1.12.1=nompi_h2386368_104
+  - httplib2=0.20.4=pyhd8ed1ab_0
+  - icu=68.2=h9c3ff4c_0
+  - idna=3.3=pyhd8ed1ab_0
+  - jbig=2.1=h7f98852_2003
+  - jinja2=3.0.3=pyhd8ed1ab_0
+  - jpeg=9e=h7f98852_0
+  - json-c=0.15=h98cffda_0
+  - jsoncpp=1.9.4=h4bd325d_3
+  - kealib=1.4.14=h87e4c3c_3
+  - keyutils=1.6.1=h166bdaf_0
+  - krb5=1.19.2=h3790be6_4
+  - laszip=3.4.3=h9c3ff4c_2
+  - laz-perf=3.0.0=h4bd325d_0
+  - lcms2=2.12=hddcbb42_0
+  - ld_impl_linux-64=2.36.1=hea4e1c9_2
+  - lerc=3.0=h9c3ff4c_0
+  - libblas=3.9.0=13_linux64_openblas
+  - libcblas=3.9.0=13_linux64_openblas
+  - libclang=11.1.0=default_ha53f305_1
+  - libcurl=7.81.0=h2574ce0_0
+  - libdap4=3.20.6=hd7c4107_2
+  - libdeflate=1.10=h7f98852_0
+  - libedit=3.1.20191231=he28a2e2_2
+  - libev=4.33=h516909a_1
+  - libevent=2.1.10=h9b69904_4
+  - libffi=3.4.2=h7f98852_5
+  - libgcc-ng=11.2.0=h1d223b6_13
+  - libgdal=3.4.0=h4471fe2_11
+  - libgfortran-ng=11.2.0=h69a702a_13
+  - libgfortran5=11.2.0=h5c6108e_13
+  - libglib=2.70.2=h174f98d_4
+  - libgomp=11.2.0=h1d223b6_13
+  - libiconv=1.16=h516909a_0
+  - libkml=1.3.0=h238a007_1014
+  - liblapack=3.9.0=13_linux64_openblas
+  - libllvm11=11.1.0=hf817b99_3
+  - libnetcdf=4.8.1=nompi_hb3fd0d9_101
+  - libnghttp2=1.47.0=h727a467_0
+  - libnsl=2.0.0=h7f98852_0
+  - libogg=1.3.4=h7f98852_1
+  - libopenblas=0.3.18=pthreads_h8fe5266_0
+  - libopus=1.3.1=h7f98852_1
+  - libpng=1.6.37=h21135ba_2
+  - libpq=13.5=hd57d9b9_1
+  - libprotobuf=3.19.4=h780b84a_0
+  - librttopo=1.1.0=h30b5eef_8
+  - libspatialindex=1.9.3=h9c3ff4c_4
+  - libspatialite=5.0.1=hf3ee066_12
+  - libssh2=1.10.0=ha56f1ee_2
+  - libstdcxx-ng=11.2.0=he4da1e4_13
+  - libtiff=4.3.0=h542a066_3
+  - libuuid=2.32.1=h7f98852_1000
+  - libvorbis=1.3.7=h9c3ff4c_0
+  - libwebp=1.2.2=h3452ae3_0
+  - libwebp-base=1.2.2=h7f98852_1
+  - libxcb=1.13=h7f98852_1004
+  - libxkbcommon=1.0.3=he3ba5ed_0
+  - libxml2=2.9.12=h72842e0_0
+  - libxslt=1.1.33=h15afd5d_2
+  - libzip=1.8.0=h4de3113_1
+  - libzlib=1.2.11=h36c2ea0_1013
+  - lz4-c=1.9.3=h9c3ff4c_1
+  - mock=4.0.3=py310hff52083_3
+  - mysql-common=8.0.28=ha770c72_0
+  - mysql-libs=8.0.28=hfa10184_0
+  - ncurses=6.3=h9c3ff4c_0
+  - nitro=2.7.dev6=h9c3ff4c_4
+  - nose2=0.9.2=py_0
+  - nspr=4.32=h9c3ff4c_1
+  - nss=3.74=hb5efdd6_0
+  - numpy=1.22.3=py310h4ef5377_2
+  - openjpeg=2.4.0=hb52868f_1
+  - openssl=1.1.1l=h7f98852_0
+  - owslib=0.25.0=pyhd8ed1ab_0
+  - pcre=8.45=h9c3ff4c_0
+  - pdal=2.3.0=h3c03ee5_18
+  - pip=22.0.4=pyhd8ed1ab_0
+  - pixman=0.40.0=h36c2ea0_0
+  - plotly=5.6.0=pyhd8ed1ab_0
+  - poppler=21.11.0=ha39eefc_0
+  - poppler-data=0.4.11=hd8ed1ab_0
+  - postgresql=13.5=h2510834_1
+  - proj=8.2.0=h277dcde_0
+  - psycopg2=2.9.2=py310h6acc77f_0
+  - pthread-stubs=0.4=h36c2ea0_1001
+  - pycparser=2.21=pyhd8ed1ab_0
+  - pydantic=1.9.0=py310h5764c6d_1
+  - pygments=2.11.2=pyhd8ed1ab_0
+  - pyopenssl=22.0.0=pyhd8ed1ab_0
+  - pyparsing=3.0.7=pyhd8ed1ab_0
+  - pyproj=3.3.0=py310h9ffabf3_0
+  - pyqt=5.12.3=py310hff52083_8
+  - pyqt-impl=5.12.3=py310h1f8e252_8
+  - pyqt5-sip=4.19.18=py310h122e73d_8
+  - pyqtchart=5.12=py310hfcd6d55_8
+  - pyqtwebengine=5.12.1=py310hfcd6d55_8
+  - pyqtwebkit=5.212=py310h163b99a_2
+  - pysocks=1.7.1=py310hff52083_5
+  - python=3.10.2=h85951f9_3_cpython
+  - python-dateutil=2.8.2=pyhd8ed1ab_0
+  - python_abi=3.10=2_cp310
+  - pytz=2021.3=pyhd8ed1ab_0
+  - pyyaml=6.0=py310h5764c6d_4
+  - qca=2.2.1=h73816c6_3
+  - qgis=3.18.3=py310he2744ef_8
+  - qjson=0.9.0=h73816c6_1006
+  - qscintilla2=2.11.2=py310ha218b7e_5
+  - qt=5.12.9=hda022c4_4
+  - qtkeychain=0.12.0=h2264404_0
+  - qtlocation=5.12.9=he1b5a44_0
+  - qtserialport=5.9.8=h73816c6_1
+  - qtwebkit=5.212=h8f65c2e_1
+  - qwt=6.1.6=h7ec6b3e_0
+  - qwtpolar=1.1.1=h73816c6_7
+  - readline=8.1=h46c0cb4_0
+  - requests=2.27.1=pyhd8ed1ab_0
+  - six=1.16.0=pyh6c4a22f_0
+  - sniffio=1.2.0=py310hff52083_3
+  - sqlite=3.37.0=h9cd32fc_0
+  - starlette=0.17.1=pyhd8ed1ab_0
+  - tenacity=8.0.1=pyhd8ed1ab_0
+  - tiledb=2.5.3=h2038895_0
+  - tk=8.6.12=h27826a3_0
+  - tomli=2.0.1=pyhd8ed1ab_0
+  - typing-extensions=4.1.1=hd8ed1ab_0
+  - typing_extensions=4.1.1=pyha770c72_0
+  - tzcode=2021e=h7f98852_0
+  - tzdata=2021e=he74cb21_0
+  - urllib3=1.26.8=pyhd8ed1ab_1
+  - wheel=0.37.1=pyhd8ed1ab_0
+  - xerces-c=3.2.3=h9d8b166_3
+  - xorg-kbproto=1.0.7=h7f98852_1002
+  - xorg-libice=1.0.10=h7f98852_0
+  - xorg-libsm=1.2.3=hd9c2040_1000
+  - xorg-libx11=1.7.2=h7f98852_0
+  - xorg-libxau=1.0.9=h7f98852_0
+  - xorg-libxdmcp=1.1.3=h7f98852_0
+  - xorg-libxext=1.3.4=h7f98852_1
+  - xorg-libxrender=0.9.10=h7f98852_1003
+  - xorg-renderproto=0.11.1=h7f98852_1002
+  - xorg-xextproto=7.3.0=h7f98852_1002
+  - xorg-xproto=7.0.31=h7f98852_1007
+  - xz=5.2.5=h516909a_1
+  - yaml=0.2.5=h7f98852_2
+  - zlib=1.2.11=h36c2ea0_1013
+  - zstd=1.5.2=ha95c52a_0
+  - pip:
+    - click==8.0.4
+    - cryptography==36.0.1
+    - markupsafe==2.1.0
+    - setuptools==60.9.3
+    - uvicorn==0.17.5
+prefix: /home/leo/.conda/envs/thesis
+```
+
+
+## Start the server (from the `Server` folder)
+
+```
+uvicorn main:app --reload 	# localhost only
+uvicorn main:app --host 0.0.0.0 --port 8000
+```

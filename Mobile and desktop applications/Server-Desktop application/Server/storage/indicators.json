@@ -1,0 +1,167 @@
+{
+    "en": {
+        "indicators": [
+            {
+                "name": "Slope",
+                "description": "Routes with lower slope have higher score since mobility is easier. You can also define the highest slope that is accessible for you (in degree).",
+                "group": "Walking path / sidewalks",
+                "parameterLabel": "Define a maximum uphill slope in degrees (optional)",
+                "datasetName": "slope",
+                "expression": "if (slope > parameter, 0, 1 - slope / parameter)",
+                "defaultParameter": "10",
+                "advancedMode": true
+            },
+            {
+                "name": "Road speed limit",
+                "description": "This indicator shows the speed limit of the road. Routes beside roads with lower speed limit are assessed with higher score since they are safer. It is also possible to define the maximum speed in km/h.",
+                "group": "Safety",
+                "parameterLabel": "Define a maximum speed limit in km/h (optional)",
+                "datasetName": "speedLimit",
+                "expression": "if (speedLimit > parameter, 0, 1 - speedLimit / parameter)",
+                "defaultParameter": "80",
+                "advancedMode": true
+            },
+            {
+                "name": "Pedestrian crossings",
+                "description": "Routes with close pedestrian crossing are assessed with higher score. You can define the maximum distance from which a pedestrian crossing is to far. The indicator will have the lowest values for areas outside the maximum distance from pedestrian crossings, and the highest values for areas nearby pedestrian crossings.",
+                "group": "Safety",
+                "parameterLabel": "Define a maximum distance in meters (optional)",
+                "datasetName": "distanceToCrossings",
+                "expression": "if (distanceToCrossings > parameter, 0, 1 - distanceToCrossings / parameter)",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Distance to lights",
+                "description": "This indicator shows how good illuminated is the route. Routes well illuminated are assessed with higher score and consider safer. You can define the maximum distance from which an illuminated area is too far. The indicator will have the lowest values for areas outside the maximum distance from public lights, and the highest values for areas nearby public lights.",
+                "group": "Safety",
+                "parameterLabel": "Define a maximum distance in meters (optional)",
+                "datasetName": "distanceToLights",
+                "expression": "if (distanceToLights > parameter, 0, 1 - distanceToLights / parameter)",
+                "defaultParameter": "50",
+                "advancedMode": false
+            },
+            {
+                "name": "Population density",
+                "description": "It describes the number of people living in an area of 250m x 250m.",
+                "group": "Amenities and Attractions",
+                "datasetName": "population",
+                "expression": "population / maximum(population)",
+                "advancedMode": true
+            },
+            {
+                "name": "Distance to schools",
+                "description": "This indicator shows how close you are to school or educational facility. You can define the maximum distance from which a school is too far. The indicator will have the lowest values for areas outside the maximum distance from schools, and the highest values for areas nearby schools.",
+                "group": "Amenities and Attractions",
+                "parameterLabel": "Define a maximum distance in meters (optional)",
+                "datasetName": "distanceToSchools",
+                "expression": "if (distanceToSchools > parameter, 0, 1 - distanceToSchools / parameter)",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Proximity of parks",
+                "description": "This indicator shows how close you are to a park area. You can define the maximum distance from which a park is too far. The indicator will have the lowest values for areas outside the maximum distance from parks, and the highest values for areas nearby parks.",
+                "group": "Amenities and Attractions",
+                "parameterLabel": "Define a maximum distance in meters (optional)",
+                "datasetName": "distanceToParks",
+                "expression": "if (distanceToParks > parameter, 0, 1 - distanceToParks / parameter)",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Distance to health facilities",
+                "description": "This indicator shows how close you are to a health facility. You can define the maximum distance from which a health facility is too far. The indicator will have the lowest values for areas outside the maximum distance from health facilities, and the highest values for areas nearby health facilities.",
+                "group": "Amenities and Attractions",
+                "parameterLabel": "Define a maximum distance in meters (optional)",
+                "datasetName": "distanceToHealths",
+                "expression": "if (distanceToHealths > parameter, 0, 1 - distanceToHealths / parameter)",
+                "defaultParameter": "800",
+                "advancedMode": true
+            }
+        ],
+        "description": "BRIGHT YOUR ROUTE is an app that assess how easy is the mobility in the area depending on several indicators. You can select the indicators to be used in the assessment depending on your needs and you can also define the relevance of each indicator depending on your mobility restrictions, for example if you use wheelchair, bike or walk with a babystroller. Therefore, the app will show you the routes that are easier and safer to move/go/walk/bike for you.\nSelecting indicators can be done by checking the boxes below."
+    },
+    "nb": {
+        "indicators": [
+            {
+                "name": "Helning",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i flate områder, mens bratte områder vil vurderes som mindre gangbare. Du kan i tillegg definere en maksimal helning (i grader) under. Gangbarhet vil da få laveste verdi (0) i områder som har en brattere helning enn ditt valg.",
+                "group": "Tursti / fortau",
+                "parameterLabel": "Definer en maksimal avstand i grader (valgfritt)",
+                "datasetName": "slope",
+                "defaultParameter": "10",
+                "advancedMode": true
+            },
+            {
+                "name": "Befolkningstetthet",
+                "description": "En høyere tetthet betyr et mer gangbart område.",
+                "group": "Fasiliteter og attraksjoner",
+                "datasetName": "population",
+                "advancedMode": true
+            },
+            {
+                "name": "Fartsgrense",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre jo lavere fartsgrensen er for motorkjøretøy i området. Du kan i tillegg definere en maksimal fartsgrense for motorkjøretøy til under. Gangbarhet vil da få laveste verdi (0) for områder som overskrider din valgte fartsgrense.",
+                "group": "Sikkerhet",
+                "parameterLabel": "Definer en maksimal hastighet i km/t (valgfritt)",
+                "datasetName": "speedLimit",
+                "defaultParameter": "80",
+                "advancedMode": true
+            },
+            {
+                "name": "Gateforbindelse",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre jo flere gatekryss det er i området.",
+                "group": "Tursti / fortau",
+                "datasetName": "numberOfIntersections",
+                "advancedMode": true
+            },
+            {
+                "name": "Fotgjengerfelt",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i områder hvor det er fotgjengerfelt. Du kan i tillegg definere en maksimal avstand til fotgjengerfelt under. Gangbarhet vil da få laveste verdi (0) utenfor denne avstanden fra en et fotgjengerfelt.",
+                "group": "Sikkerhet",
+                "parameterLabel": "Definer en maksimal avstand i meter (valgfritt)",
+                "datasetName": "distanceToCrossings",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Skoler",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i nærheten av skoler. Du kan i tillegg definere en maksavstand til skoler under. Gangbarhet vil da få laveste verdi (0) utenfor denne avstanden fra en skole.",
+                "parameterLabel": "Definer en maksimal avstand i meter (valgfritt)",
+                "group": "Fasiliteter og attraksjoner",
+                "datasetName": "distanceToSchools",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Parkområder",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i nærheten av grønt- og parkområder. Du kan i tillegg definere en maksavstand til parkområder under. Gangbarhet vil da få laveste verdi (0) utenfor denne avstanden fra et grønt- og parkområde.",
+                "group": "Fasiliteter og attraksjoner",
+                "parameterLabel": "Definer en maksimal avstand i meter (valgfritt)",
+                "datasetName": "distanceToParks",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Helseinstitusjoner",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i nærheten av helseinstitusjoner. Du kan i tillegg definere en maksavstand til helseinstitusjoner under. Gangbarhet vil da få laveste verdi (0) utenfor denne avstanden fra en helseinstitusjon.",
+                "parameterLabel": "Definer en maksimal avstand i meter (valgfritt)",
+                "group": "Fasiliteter og attraksjoner",
+                "datasetName": "distanceToHealths",
+                "defaultParameter": "800",
+                "advancedMode": true
+            },
+            {
+                "name": "Belysning",
+                "description": "Ved å inkludere denne indikatoren vil gangbarhet vurderes som bedre i områder hvor det er offentlige lys i nærheten. Du kan i tillegg definere en maksimal avstand til offentlig lys under. Gangbarhet vil da få laveste verdi (0) utenfor denne avstanden fra en offentlig belysning.",
+                "parameterLabel": "Definer en maksimal avstand i meter (valgfritt)",
+                "group": "Sikkerhet",
+                "datasetName": "distanceToLights",
+                "defaultParameter": "50",
+                "advancedMode": false
+            }
+        ],
+        "description": "Gangbarhet kan beskrives som en kombinasjon av indikatorene beskrevet nedenfor.\nDu kan velge hvilken indikator du vil bruke ved å merke av i boksene nedenfor."
+    }
+}

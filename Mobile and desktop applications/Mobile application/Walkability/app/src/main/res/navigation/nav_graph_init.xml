@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_init"
+    app:startDestination="@id/selectIndicatorsFragment">
+
+    <fragment
+        android:id="@+id/selectIndicatorsFragment"
+        android:name="com.example.walkability.fragments.SelectIndicatorsFragment"
+        android:label="@string/selectIndicatorsTitle"
+        tools:layout="@layout/fragment_select_indicators">
+        <action
+            android:id="@+id/selectIndicators"
+            app:destination="@id/selectWeightsFragment" />
+        <argument
+            android:name="init"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectWeightsFragment"
+        android:name="com.example.walkability.fragments.SelectWeightsFragment"
+        android:label="@string/selectWeightsTitle"
+        tools:layout="@layout/fragment_select_weights">
+        <argument
+            android:name="init"
+            android:defaultValue="true"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_selectWeightsFragment_to_loadingFragment"
+            app:destination="@id/loadingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.example.walkability.fragments.LoadingFragment"
+        android:label="@string/loadingIndicators">
+        <argument
+            android:name="init"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

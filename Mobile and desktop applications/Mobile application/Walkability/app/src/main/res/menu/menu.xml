@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/toggleIndicators"
+            android:title="@string/displayIndicators"
+            app:actionLayout="@layout/switch_item"
+            android:icon="@drawable/ic_baseline_visibility_24"
+            app:actionViewClass="androidx.appcompat.widget.SwitchCompat"/>
+        <item
+            android:id="@+id/selectIndicatorsFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="@string/selectIndicators" />
+        <item
+            android:id="@+id/selectWeightsFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="@string/editWeights" />
+        <item
+            android:id="@+id/saveWeightsFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_save_24"
+            android:title="@string/saveIndicators" />
+        <item
+            android:id="@+id/loadWeightsFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_arrow_circle_down_24"
+            android:title="@string/loadIndicators" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/toggleSteepness"
+            android:title="@string/displaySteepness"
+            app:actionLayout="@layout/switch_item"
+            android:icon="@drawable/ic_baseline_auto_graph_24"
+            app:actionViewClass="androidx.appcompat.widget.SwitchCompat"/>
+        <item
+            android:id="@+id/steepnessDefinitionFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_edit_road_24"
+            android:title="@string/steepnessDefinition" />
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/searchLocationFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_location_searching_24"
+            android:title="@string/navigate" />
+        <item
+            android:id="@+id/stopNavigation"
+            android:icon="@drawable/ic_baseline_location_disabled_24"
+            android:title="@string/stopNavigation" />
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/toggleLegend"
+            android:title="@string/showLegend"
+            app:actionLayout="@layout/switch_item"
+            android:icon="@drawable/ic_baseline_legend_toggle_24"
+            app:actionViewClass="androidx.appcompat.widget.SwitchCompat"/>
+    </group>
+
+    <group
+        android:id="@+id/group5"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/settingsFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/aboutFragment"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="@string/about" />
+    </group>
+
+    <group
+        android:id="@+id/group6"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/quitApp"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="@string/quit" />
+    </group>
+</menu>

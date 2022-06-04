@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.walkability.fragments.MapFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_mapFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_selectWeightsFragment2"
+            app:destination="@id/selectWeightsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_selectIndicatorsFragment2"
+            app:destination="@id/selectIndicatorsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_saveWeightsFragment2"
+            app:destination="@id/saveWeightsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_loadWeightsFragment2"
+            app:destination="@id/loadWeightsFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_searchLocationFragment"
+            app:destination="@id/searchLocationFragment" />
+        <argument
+            android:name="directions"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_mapFragment_to_steepnessDefinitionFragment"
+            app:destination="@id/steepnessDefinitionFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.walkability.fragments.SettingsFragment"
+        android:label="@string/settings" />
+    <fragment
+        android:id="@+id/selectWeightsFragment"
+        android:name="com.example.walkability.fragments.SelectWeightsFragment"
+        android:label="@string/selectWeightsTitle">
+        <argument
+            android:name="init"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_selectWeightsFragment_to_loadingFragment3"
+            app:destination="@id/loadingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectIndicatorsFragment"
+        android:name="com.example.walkability.fragments.SelectIndicatorsFragment"
+        android:label="@string/selectIndicatorsTitle">
+        <argument
+            android:name="init"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <dialog
+        android:id="@+id/saveWeightsFragment"
+        android:name="com.example.walkability.fragments.SaveIndicatorsFragment" />
+    <dialog
+        android:id="@+id/loadWeightsFragment"
+        android:name="com.example.walkability.fragments.LoadIndicatorsFragment" />
+    <fragment
+        android:id="@+id/searchLocationFragment"
+        android:name="com.example.walkability.fragments.SearchLocationFragment"
+        android:label="@string/navigate"
+        tools:layout="@layout/fragment_search_location" >
+        <action
+            android:id="@+id/action_searchLocationFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/steepnessDefinitionFragment"
+        android:name="com.example.walkability.fragments.SteepnessDefinitionFragment"
+        android:label="@string/steepnessDefinition"
+        tools:layout="@layout/fragment_steepness_definition" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.walkability.fragments.AboutFragment"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.example.walkability.fragments.LoadingFragment"
+        android:label="@string/loadingIndicators" >
+        <argument
+            android:name="init"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+</navigation>

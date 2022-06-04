@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        app:key="advancedMode"
+        app:title="@string/advancedMode"
+        app:useSimpleSummaryProvider="true" />
+
+</PreferenceScreen>

@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name" translatable="false">Bright your route</string>
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoicnlsZXJuIiwiYSI6ImNreXR1OW9tZTBpYmsyeG84bDhweXlpOHMifQ.IaYeWhFNJG8TQl3-Rl-zZg</string>
+
+    <string name="displayIndicators">Display indicators</string>
+
+    <string name="selectIndicators">Select indicators</string>
+    <string name="editWeights">Edit weights</string>
+    <string name="settings">Settings</string>
+    <string name="quit">Quit</string>
+    <string name="connection_failed">Connection failed</string>
+    <string name="selectWeightsDescription">In this screen, you can assign a weight (from 0 to 100) to the selected indicators based on how important you think they are.</string>
+
+    <string name="high">High</string>
+    <string name="low">Low</string>
+    <string name="colorScale">Color scale</string>
+
+    <string name="selectIndicatorsTitle">Select indicators</string>
+    <string name="next">Next</string>
+    <string name="parameterValue">Parameter value</string>
+    <string name="selectAtLeastOneIndicator">You have to select at least one indicator.</string>
+    <string name="indicatorsEdited">Indicators edited.</string>
+
+    <string name="selectWeightsTitle">Select weights</string>
+    <string name="submit">Submit</string>
+
+    <string name="loadingIndicators">Loading indicators…</string>
+    <string name="loadingIndicatorsDescription">This may take up to 30 seconds</string>
+
+    <string name="advancedMode">Advanced mode</string>
+
+    <string name="indicatorsFile" translatable="false">indicatorsFile</string>
+    <string name="heatmapFile" translatable="false">heatmapFile</string>
+    <string name="language" translatable="false">language</string>
+    <string name="settingsFile" translatable="false">settingsFile</string>
+    <string name="legendDisplayed" translatable="false">legendDisplayed</string>
+
+    <string name="saveIndicators">Save indicators</string>
+    <string name="backupName">Backup name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="saveCurrentIndicators">Save current indicators</string>
+    <string name="indicators" translatable="false">indicators</string>
+    <string name="indicatorsSaved">Indicators saved</string>
+    <string name="specifyFileName">You must specify a backup name</string>
+
+    <string name="loadIndicators">Load indicators</string>
+    <string name="load">Load</string>
+    <string name="indicatorsLoaded">Indicators loaded</string>
+
+    <string name="navigate">Navigate</string>
+    <string name="stopNavigation">Stop navigation</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="place">Place</string>
+    <string name="myLocation">Use my location</string>
+    <string name="search">Search</string>
+    <string name="unknownLocation">Unknown location</string>
+    <string name="notRetrieveLocation">Could not retrieve location</string>
+    <string name="locationNotEnabled">Location not enabled</string>
+    <string name="routeNotFound">Route not found</string>
+
+    <string name="showLegend">Show legend</string>
+
+    <string name="steepness">Steepness</string>
+    <string name="displaySteepness">Display steepness</string>
+    <string name="steepnessDefinition">Steepness definition</string>
+    <string name="custom">Custom</string>
+    <string name="wheelchair">Wheelchair</string>
+    <string name="powered">Powered</string>
+    <string name="cane">Cane</string>
+    <string name="maximumUphillSteepness">Maximum uphill steepness:</string>
+    <string name="steepnessDefined">Steepness defined</string>
+    <string name="steepnessFile" translatable="false">steepnessFile</string>
+    <string name="maxSteepness" translatable="false">maxSteepness</string>
+    <string name="steepnessDisplayed" translatable="false">steepnessDisplayed</string>
+
+    <string name="about">About</string>
+    <string name="aboutInfo">This application was developed by Léo Leplat for his master thesis on the Simulation and Visualization program at NTNU i Ålesund. This work has been conducted under the supervision of Ricardo Da Silva Torres (NTNU) and Claudia Viviana Lopez Alfaro (United Future Lab Norway).</string>
+    <string name="ntnuLogo">NTNU logo</string>
+    <string name="alesundKommuneLogo">Ålesund Kommune logo</string>
+</resources>
